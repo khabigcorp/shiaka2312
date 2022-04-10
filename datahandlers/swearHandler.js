@@ -68,14 +68,15 @@ module.exports = {
         const { content } = message;
         const { tag, id } = message.author;
         //change username of person
+        if(message.author.bot) return;
+        console.log(tag);
         setTimeout(async()=>{
             await swearSchema.updateOne({
                 "UID": id,
             }, {
-            $set: { "authorTag": tag,}
+            $set: { "authorTag": tag, }
             })
         }, 10);
-        if(message.author.bot) return;
         //swear logic
         let swearIncrease = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         if(checkSwear(content,'fuck'))swearIncrease[0] = content.match(/fuck/g).length;
