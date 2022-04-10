@@ -90,6 +90,9 @@ module.exports = {
         if(checkSwear(content,'bitch'))swearIncrease[9] = content.match(/bitch/g).length;
         if(checkSwear(content,'pussy'))swearIncrease[10] = (content.match(/pussy/g).length-(content.match(/pussy cat/g)|| []).length);
         if(checkSwear(content,'sex'))swearIncrease[11] = (content.match(/sex/g).length-(content.match(/sexy/g)|| []).length-(content.match(/sexu/g)|| []).length);
+        for(i = 0; i<13; i++){
+            if(swearIncrease[i] < 0) swearIncrease[i] == 0; 
+        }
         const total = swearIncrease.reduce((acc,cur) => acc+cur);
         //logic for user inputs
         checkUser(id).then((thereIsUser) => {
