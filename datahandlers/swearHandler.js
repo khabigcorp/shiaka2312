@@ -17,49 +17,6 @@ async function checkUser(authorid){
     });
 }
 
-async function addValues(incrementArray, swearTotal, tag, id){
-    const swearWordsObject = {
-        UID: id,
-        authorTag: tag,
-        fck: incrementArray[0],
-        sht: incrementArray[1],
-        ass: incrementArray[2],
-        otn: incrementArray[3],
-        cck: incrementArray[4],
-        dck: incrementArray[5],
-        cum: incrementArray[6],
-        nga: incrementArray[7],
-        ngr: incrementArray[8],
-        bch: incrementArray[9],
-        psy: incrementArray[10],
-        sex: incrementArray[11],
-        total: swearTotal,
-    }
-    await new swearSchema(swearWordsObject).save()
-}
-
-async function updateValues(incrementArray, swearTotal, userID){
-    await swearSchema.updateOne({
-        "UID": userID,
-    }, {
-        $inc: {
-            "fck": incrementArray[0],
-            "sht": incrementArray[1],
-            "ass": incrementArray[2],
-            "otn": incrementArray[3],
-            "cck": incrementArray[4],
-            "dck": incrementArray[5],
-            "cum": incrementArray[6],
-            "nga": incrementArray[7],
-            "ngr": incrementArray[8],
-            "bch": incrementArray[9],
-            "psy": incrementArray[10],
-            "sex": incrementArray[11],
-            "total": swearTotal,
-        }
-    });
-}
-
 module.exports = {
     name: "swearHandler",
     description: "takes your swears and puts them in the database",
