@@ -72,7 +72,7 @@ module.exports = {
             await swearSchema.updateOne({
                 "UID": id,
             }, {
-                "authorTag": message.author.tag,
+            $set: { "authorTag": message.author.tag,}
             })
         }, 10);
         if(message.author.bot) return;
