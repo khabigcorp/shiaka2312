@@ -31,7 +31,7 @@ module.exports = {
         //the embed url, if there is any.
         if(deletedMessage.embeds[0] != undefined) url = deletedMessage.embeds[0].url;
         //the timestamp
-        const timestamp = createTimestamp(createdAt, createdAt.getMinutes > 0)
+        const timestamp = createTimestamp(createdAt, createdAt.getMinutes > 9)
         if(testing){
             console.log(channelId);
             console.log(tag);
